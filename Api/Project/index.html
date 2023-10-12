@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Haitam Aouad Idrissi" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Project - IntheCloud Backend Documentation</title>
+    <title>Project Endpoints - IntheCloud Backend Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Project";
+        var mkdocs_page_name = "Project Endpoints";
         var mkdocs_page_input_path = "Api/Project.md";
         var mkdocs_page_url = null;
       </script>
@@ -99,12 +99,44 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Permissions/">Permissions</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Project</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Project Endpoints</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#single-project-data-projectid">Single project data : project/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#all-projects-data-project">All Projects Data : project/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#delete-project">Delete project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-project">Create project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#update-project">Update project</a>
+    </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Project_Type/">Project Type</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Project_File/">Project File API</a>
     <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#geo_data">Geo_Data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#analytics">Analytics</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#delete-project-file">Delete Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#upload-project-file">Upload Project File</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Sector/">Sectors Endpoints</a>
@@ -120,6 +152,54 @@
     <li class="toctree-l2"><a class="reference internal" href="../Sector/#delete-sector">Delete Sector</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="../Sector/#create-sector">Create Sector</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Types/">Types API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#project-types">Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#single-project-type-data-projecttypeid">Single Project Type data : projecttype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#all-project-types-data-projecttype">All Project Types Data : projecttype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-project-types">Delete Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-project-type">Create Project Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#file-types">File Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_1">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#single-file-type-data-filetypeid">Single file type data : filetype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#all-file-types-data-filetype">All File Types Data : filetype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-file-type">Delete File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-file-type">Create File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#data-types">Data Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_2">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-datatype">Delete datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-datatype">Create datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#file-extensions">File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_3">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-file-extensions">Delete File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-file-extensions">Create File Extensions</a>
     </li>
     </ul>
                   </li>
@@ -147,6 +227,12 @@
               <p class="caption"><span class="caption-text">Apps</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../Apps/Authentication/">Authentication</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Apps/Permissions/">Permissions</a>
+    <ul>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Contact</a>
     <ul>
@@ -336,7 +422,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Api</li>
-      <li class="breadcrumb-item active">Project</li>
+      <li class="breadcrumb-item active">Project Endpoints</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -345,16 +431,169 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="project">Project</h1>
-<pre><code>path('project/', ProjectsList.as_view(), name="projects_list"),
-path('project/&lt;int:pk&gt;', ProjectsDetail.as_view(), name="project_single"),
+                <h1 id="project-endpoints">Project Endpoints</h1>
+<p>This page regroups a set of endpoints to interact with the projects related data.</p>
+<h2 id="retrieve-data">Retrieve data</h2>
+<ul>
+<li>
+<h3 id="single-project-data-projectid">Single project data : <code>project/&lt;id&gt;</code></h3>
+To retrieve a project data you can request the api endpoint <code>/api/project/&lt;id&gt;</code>:</li>
+</ul>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/project/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
 </code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The project's <code>id</code>  of whom you want to retrieve data.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+</ul>
+<p>This endpoints response is a json object that contains the project's data:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;:2,
+    &quot;project_type_label&quot;:&quot;project type 1&quot;,
+    &quot;user_username&quot;:&quot;user_test&quot;,
+    &quot;delimitation_field&quot;:[geojson object],
+    &quot;name&quot;:&quot;project_1&quot;,
+    &quot;description&quot;:&quot;Shapefiles for geodata&quot;,
+    &quot;hubspot_proj_id&quot;:&quot;ffwefw&quot;,
+    &quot;last_edit&quot;:&quot;2023-09-16T12:59:40.080984Z&quot;,
+    &quot;area_file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Arrete_ZICAD_01-2023_1.kml&quot;,
+    &quot;is_archived&quot;:false,
+    &quot;proj_type&quot;:1,
+    &quot;user&quot;:2
+}
+</code></pre>
+<ul>
+<li><code>project_type_label</code> : label of the project type the project is associated with.</li>
+<li><code>delimitation_field</code> : A geojson object generated from the kml file used to create the project, it is the delimitation polygone of the project on the map.</li>
+<li><code>area_file</code> : Link to the kml file of the project, it is the file that contains the delimitation shape of the project on the map.</li>
+<li><code>proj_type</code> : <code>id</code> of the project type the project is associated to.</li>
+<li>
+<p><code>user</code> : <code>id</code> of the user the project is associated to</p>
+</li>
+<li>
+<h3 id="all-projects-data-project">All Projects Data : <code>project/</code></h3>
+</li>
+</ul>
+<p>To retrieve the list of all the projects and their data at once you can request the api endpoint <code>/api/project/</code>:</p>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/project/
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+</ul>
+<p>This endpoint response is a list of json objects that contains projects data (The list of all projects):</p>
+<pre><code class="language-json">[
+    {
+        &quot;id&quot;:2,
+        &quot;project_type_label&quot;:&quot;project type 1&quot;,
+        &quot;user_username&quot;:&quot;user_test&quot;,
+        &quot;delimitation_field&quot;:[geojson object],
+        &quot;name&quot;:&quot;project_1&quot;,
+        &quot;description&quot;:&quot;Shapefiles for geodata&quot;,
+        &quot;hubspot_proj_id&quot;:&quot;ffwefw&quot;,
+        &quot;last_edit&quot;:&quot;2023-09-16T12:59:40.080984Z&quot;,
+        &quot;area_file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Arrete_ZICAD_01-2023_1.kml&quot;,
+        &quot;is_archived&quot;:false,
+        &quot;proj_type&quot;:1,
+        &quot;user&quot;:2
+    },
+    {
+        &quot;id&quot;:3,
+        &quot;project_type_label&quot;:&quot;project type 1&quot;,
+        &quot;user_username&quot;:&quot;user_test&quot;,
+        &quot;delimitation_field&quot;:[geojson object],
+        &quot;name&quot;:&quot;project_2&quot;,
+        &quot;description&quot;:&quot;Geographic Data with points&quot;,
+        &quot;hubspot_proj_id&quot;:&quot;ffwefw&quot;,
+        &quot;last_edit&quot;:&quot;2023-09-16T13:00:57.562308Z&quot;,
+        &quot;area_file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_2/Arrete_ZICAD_01-2023_1.kml&quot;,
+        &quot;is_archived&quot;:false,
+        &quot;proj_type&quot;:1,
+        &quot;user&quot;:2
+    }
+    ...
+    ...
+]
+</code></pre>
+<h2 id="delete-project">Delete project</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only <code>ADMIN</code> users can delete projects.</p>
+</div>
+<p>To delete a project data you can request the api endpoint <code>/api/project/&lt;id&gt;</code>:</p>
+<pre><code class="language-http">DELETE / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/project/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The project's <code>id</code>  you want to delete.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+</ul>
+<h2 id="create-project">Create project</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only <code>ADMIN</code> or <code>AG_DATA</code> users can create projects with this API.</p>
+</div>
+<p>To create a project data you can request the api endpoint <code>/api/project/</code>:</p>
+<pre><code class="language-http">NEEDS TO BE EDITED
+POST / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/project/
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+Body: {
+    &quot;name&quot;:&quot;project_2&quot;,
+    &quot;description&quot;:&quot;Geographic Data with points&quot;,
+    &quot;hubspot_proj_id&quot;:&quot;ffwefw&quot;,
+    &quot;area_file&quot;:[KML FILE],
+    &quot;proj_type&quot;:1,
+    &quot;user&quot;:2
+}
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+<li><code>proj_type</code> : <code>id</code> of the project type the project is associated to.</li>
+<li><code>user</code> : <code>id</code> of the user the project is associated to</li>
+</ul>
+<h2 id="update-project">Update project</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only <code>ADMIN</code> or <code>AG_DATA</code> users can update projects with this API.</p>
+</div>
+<p>To update a project's data you can request the api endpoint <code>/api/project/</code>:</p>
+<pre><code class="language-http">NEEDS TO BE EDITED
+PUT / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/project/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+Body: {
+    &quot;name&quot;:&quot;project_2&quot;,
+    &quot;description&quot;:&quot;Geographic Data with points&quot;,
+    &quot;hubspot_proj_id&quot;:&quot;ffwefw&quot;,
+    &quot;area_file&quot;:[KML FILE],
+    &quot;proj_type&quot;:1,
+    &quot;user&quot;:2
+}
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+<li><code>&lt;id&gt;</code> : The project's <code>id</code>  you want to update.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../Permissions/" class="btn btn-neutral float-left" title="Permissions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Project_Type/" class="btn btn-neutral float-right" title="Project Type">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Project_File/" class="btn btn-neutral float-right" title="Project File API">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -380,7 +619,7 @@ path('project/&lt;int:pk&gt;', ProjectsDetail.as_view(), name="project_single"),
       <span><a href="../Permissions/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Project_Type/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Project_File/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

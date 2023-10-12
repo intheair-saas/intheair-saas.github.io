@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Haitam Aouad Idrissi" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Project Type - IntheCloud Backend Documentation</title>
+    <title>Project File API - IntheCloud Backend Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Project Type";
-        var mkdocs_page_input_path = "Api/Project_Type.md";
+        var mkdocs_page_name = "Project File API";
+        var mkdocs_page_input_path = "Api/Project_File.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -99,12 +99,44 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Permissions/">Permissions</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../Project/">Project</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../Project/">Project Endpoints</a>
     <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Project/#single-project-data-projectid">Single project data : project/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Project/#all-projects-data-project">All Projects Data : project/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#delete-project">Delete project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#create-project">Create project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#update-project">Update project</a>
+    </li>
     </ul>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Project Type</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Project File API</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#geo_data">Geo_Data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#analytics">Analytics</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#delete-project-file">Delete Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#upload-project-file">Upload Project File</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Sector/">Sectors Endpoints</a>
@@ -120,6 +152,54 @@
     <li class="toctree-l2"><a class="reference internal" href="../Sector/#delete-sector">Delete Sector</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="../Sector/#create-sector">Create Sector</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Types/">Types API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#project-types">Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#single-project-type-data-projecttypeid">Single Project Type data : projecttype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#all-project-types-data-projecttype">All Project Types Data : projecttype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-project-types">Delete Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-project-type">Create Project Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#file-types">File Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_1">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#single-file-type-data-filetypeid">Single file type data : filetype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#all-file-types-data-filetype">All File Types Data : filetype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-file-type">Delete File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-file-type">Create File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#data-types">Data Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_2">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-datatype">Delete datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-datatype">Create datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#file-extensions">File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_3">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-file-extensions">Delete File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-file-extensions">Create File Extensions</a>
     </li>
     </ul>
                   </li>
@@ -147,6 +227,12 @@
               <p class="caption"><span class="caption-text">Apps</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../Apps/Authentication/">Authentication</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Apps/Permissions/">Permissions</a>
+    <ul>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Contact</a>
     <ul>
@@ -336,7 +422,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Api</li>
-      <li class="breadcrumb-item active">Project Type</li>
+      <li class="breadcrumb-item active">Project File API</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -345,15 +431,148 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="project-type">Project Type</h1>
-<pre><code>path('projecttype/', ProjectTypesList.as_view(), name="projecttypes_list"),
-path('projecttype/&lt;int:pk&gt;', ProjectTypesDetail.as_view(), name="projecttype_single"),
+                <h1 id="project-file-api">Project File API</h1>
+<p>This page regroups a list of API calls to manage the project files for each project.</p>
+<h2 id="retrieve-data">Retrieve data</h2>
+<ul>
+<li>
+<h3 id="single-project-file-data-dataid">Single Project File data : <code>data/&lt;id&gt;</code></h3>
+To retrieve a project file data you can request the api endpoint <code>/api/data/&lt;id&gt;</code>:</li>
+</ul>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/data/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
 </code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The project file's <code>id</code>  of whom you want to retrieve data.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
+</ul>
+<p>This endpoints response is a json object that contains the project file's data, the project depends on the data type used by the project file:</p>
+<h4 id="geo_data">Geo_Data</h4>
+<pre><code>TO ADD LATER
+</code></pre>
+<h4 id="analytics">Analytics</h4>
+<pre><code>TO ADD LATER
+</code></pre>
+<ul>
+<li>
+<h3 id="all-project-files-of-a-project-projectfileid">All Project Files of a project : <code>projectfile/&lt;id&gt;</code></h3>
+</li>
+</ul>
+<p>To retrieve the list of all the project files and their data at once you can request the api endpoint <code>/api/projectfile/&lt;id&gt;/</code>:</p>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/projectfile/&lt;id&gt;/
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
+<li><code>&lt;id&gt;</code> : id of the project whom you want to retrieve the project files.</li>
+</ul>
+<p>This endpoint response is a list of json objects that contains project files data (The list of all project files):</p>
+<pre><code class="language-json">[
+    {
+        &quot;id&quot;:1,
+        &quot;name&quot;:&quot;shapefile&quot;,
+        &quot;description&quot;:&quot;Shapefiles for geodata&quot;,
+        &quot;file_type&quot;:&quot;Geo_File&quot;,
+        &quot;data_type&quot;:2,
+        &quot;project&quot;:2,
+        &quot;files&quot;:[
+            {
+                &quot;id&quot;:1,
+                &quot;file_type&quot;:&quot;shapefile&quot;,
+                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shx&quot;,
+                &quot;to_project_files&quot;:1
+            },
+            {
+                &quot;id&quot;:2,
+                &quot;file_type&quot;:&quot;shapefile&quot;,
+                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shp&quot;,
+                &quot;to_project_files&quot;:1
+            },
+            ...
+            ...
+            ],
+        &quot;processed&quot;:true
+    },
+    {
+        &quot;id&quot;:1,
+        &quot;name&quot;:&quot;shapefile&quot;,
+        &quot;description&quot;:&quot;Shapefiles for geodata&quot;,
+        &quot;file_type&quot;:&quot;Geo_File&quot;,
+        &quot;data_type&quot;:2,
+        &quot;project&quot;:2,
+        &quot;files&quot;:[
+            {
+                &quot;id&quot;:1,
+                &quot;file_type&quot;:&quot;shapefile&quot;,
+                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shx&quot;,
+                &quot;to_project_files&quot;:1
+            },
+            {
+                &quot;id&quot;:2,
+                &quot;file_type&quot;:&quot;shapefile&quot;,
+                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shp&quot;,
+                &quot;to_project_files&quot;:1
+            },
+            ...
+            ...
+            ],
+        &quot;processed&quot;:true
+    },
+    ...
+    ...
+    ]
+</code></pre>
+<h2 id="delete-project-file">Delete Project File</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only <code>ADMIN</code> project files can delete project files.</p>
+</div>
+<p>To delete a projectfile data you can request the api endpoint <code>/api/projectfile/&lt;id&gt;</code>:</p>
+<pre><code class="language-http">DELETE / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/projectfile/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The project file's <code>id</code>  of whom you want to retrieve data.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
+</ul>
+<h2 id="upload-project-file">Upload Project File</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only <code>ADMIN</code> or <code>AG_DATA</code> project files can create project files with this API.</p>
+</div>
+<p>To create a projectfile data you can request the api endpoint <code>/api/projectfile/&lt;id&gt;/</code>:</p>
+<pre><code class="language-http">POST / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/projectfile/&lt;id&gt;/
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+Body: {
+    &quot;name&quot;:&quot;name of the file&quot;,
+    &quot;file_ext&quot;:&quot;file extension id of the project file&quot;,
+    &quot;data_type&quot;:&quot;id of the data type used by the project file&quot;,
+    &quot;project&quot;:&quot;id of the project linked to the file&quot;,
+    &quot;description&quot;:&quot;description of the project file&quot;,
+    &quot;uploaded_files&quot;:[List of the files that forms the project file]
+}
+</code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The project <code>id</code> to whom you want to link the file.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Project/" class="btn btn-neutral float-left" title="Project"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Project/" class="btn btn-neutral float-left" title="Project Endpoints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../Sector/" class="btn btn-neutral float-right" title="Sectors Endpoints">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
