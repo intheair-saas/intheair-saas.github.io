@@ -1,0 +1,21 @@
+theme:
+  name: readthedocs
+  nav_style: dark
+  collapse_navigation: false
+  logo: 'logoBlanc.png'
+  hljs_languages:
+    - shell
+    - http
+    - env
+    - python
+extra_css:
+  - style.css
+site_name: IntheCloud Backend Documentation
+site_author: Haitam Aouad Idrissi
+
+features:
+  - navigation.collapse
+
+markdown_extensions:
+  - admonition
+

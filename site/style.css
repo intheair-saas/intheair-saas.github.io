@@ -1,0 +1,8 @@
+.wy-nav-content{
+    max-width: 1300px;
+    width: 90%;
+}
+
+svg{
+    overflow-x: scroll; 
+}

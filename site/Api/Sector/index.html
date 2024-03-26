@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Haitam Aouad Idrissi" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Sectors Endpoints - IntheCloud Backend Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sectors Endpoints";
+        var mkdocs_page_input_path = "Api/Sector.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/shell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/env.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../logoBlanc.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Repo Description</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../..#dependencies">Dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#contact">Contact</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Api</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Authentication/">Authentication API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Authentication/#login">Login</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Authentication/#request">Request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Authentication/#response">Response</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Authentication/#data">Data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Authentication/#refresh">Refresh</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Authentication/#request_1">Request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Authentication/#response_1">Response</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Company/">Company Endpoints</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Company/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Company/#single-company-data-companyid">Single company data : company/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Company/#all-companies-data-company">All Companies Data : company/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Company/#delete-company">Delete Company</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Company/#create-company">Create company</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Company/#update-company">Update company</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Permissions/">Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Project/">Project Endpoints</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Project/#single-project-data-projectid">Single project data : project/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Project/#all-projects-data-project">All Projects Data : project/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#delete-project">Delete project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#create-project">Create project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project/#update-project">Update project</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Project_File/">Project File API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#geo_data">Geo_Data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#analytics">Analytics</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#delete-project-file">Delete Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#upload-project-file">Upload Project File</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Sectors Endpoints</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#single-sector-data-sectorid">Single sector data : sector/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#all-sectors-data-sector">All sectors Data : sector/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#delete-sector">Delete Sector</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create-sector">Create Sector</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Types/">Types API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#project-types">Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#single-project-type-data-projecttypeid">Single Project Type data : projecttype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#all-project-types-data-projecttype">All Project Types Data : projecttype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-project-types">Delete Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-project-type">Create Project Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#file-types">File Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_1">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#single-file-type-data-filetypeid">Single file type data : filetype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../Types/#all-file-types-data-filetype">All File Types Data : filetype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-file-type">Delete File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-file-type">Create File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#data-types">Data Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_2">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-datatype">Delete datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-datatype">Create datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#file-extensions">File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#retrieve-data_3">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#delete-file-extensions">Delete File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Types/#create-file-extensions">Create File Extensions</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../User/">User Endpoints</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../User/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../User/#single-user-data-userid">Single user data : user/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../User/#all-users-data-user">All users Data : user/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../User/#update-user-data">Update User data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../User/#delete-user">Delete User</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../User/#create-user">Create User</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../User/#change-password">Change Password</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Apps</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Apps/Authentication/">Authentication</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Apps/Permissions/">Permissions</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Contact</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/CONTACT/">Description</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/contact/CONTACT/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/contact/CONTACT/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/contact/CONTACT/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Files</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/FILES/">Files App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#3-serializers">3. Serializers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#4-scripts">4. Scripts</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Hubspot api</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/">Hubspot Api App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Raster</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/RASTER/">Raster App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/raster/RASTER/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/raster/RASTER/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/raster/RASTER/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Reports</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/REPORTS/">Reports App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/reports/REPORTS/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/reports/REPORTS/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/reports/REPORTS/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">User</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">User App Models Documentation</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Models/#user-types">User Types</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/USER/">USER App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/USER/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/USER/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/USER/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Views/">User Views</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Views/#userdetail">UserDetail</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Architecture/Database/">Database</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Architecture/Functionnal/">Functionnal</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Installation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../installation/INSTALLATION/">Installation Guide</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../installation/INSTALLATION/#python-dependencies">Python dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../installation/INSTALLATION/#geospatial-dependencies">Geospatial dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../installation/INSTALLATION/#rabbitmq">RabbitMQ</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../installation/INSTALLATION/#configuration">Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../installation/INSTALLATION/#celery">Celery</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../installation/INSTALLATION/#email-server">Email server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../installation/INSTALLATION/#database">Database</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../installation/INSTALLATION/#debug-and-security">Debug and Security</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../installation/INSTALLATION/#run-the-server">Run the server</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../installation/INSTALLATION/#init-the-data">Init the Data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../installation/INSTALLATION/#run">Run</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">IntheCloud Backend Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Api</li>
+      <li class="breadcrumb-item active">Sectors Endpoints</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sectors-endpoints">Sectors Endpoints</h1>
+<p>This page regroups a set of endpoints to interact with the sectors related data.</p>
+<h2 id="retrieve-data">Retrieve data</h2>
+<ul>
+<li>
+<h3 id="single-sector-data-sectorid">Single sector data : <code>sector/&lt;id&gt;</code></h3>
+To retrieve a sector data you can request the api endpoint <code>/api/sector/&lt;id&gt;</code>:</li>
+</ul>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/sector/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The sector's <code>id</code>  of whom you want to retrieve data, it is the <code>"activity_sector"</code> property.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+</ul>
+<p>This endpoints response is a json object that contains the sector's data:</p>
+<pre><code class="language-json">{
+    &quot;activity_sector&quot;: &quot;activity sector label&quot;,
+    &quot;description&quot;: &quot;activity sector description&quot;,
+}
+</code></pre>
+<ul>
+<li>
+<h3 id="all-sectors-data-sector">All sectors Data : <code>sector/</code></h3>
+</li>
+</ul>
+<p>To retrieve the list of all the sectors and their data at once you can request the api endpoint <code>/api/sector/</code>:</p>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/sector/
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+</ul>
+<p>This endpoint response is a list of json objects that contains sectors data (The list of all sectors):</p>
+<pre><code class="language-json">[
+    {
+    &quot;activity_sector&quot;: &quot;sector &quot;,
+    &quot;description&quot;: &quot;description&quot;,
+    },
+    {
+    &quot;activity_sector&quot;: &quot;sector 2&quot;,
+    &quot;description&quot;: &quot;description&quot;,
+    },
+    ...
+    ...
+]
+</code></pre>
+<h2 id="delete-sector">Delete Sector</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only <code>ADMIN</code> users can delete sectors.</p>
+</div>
+<p>To delete a sector data you can request the api endpoint <code>/api/sector/&lt;id&gt;</code>:</p>
+<pre><code class="language-http">DELETE / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/sector/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The sector's <code>id</code>  of whom you want to retrieve data, it is the <code>"activity_sector"</code> property.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+</ul>
+<h2 id="create-sector">Create Sector</h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only <code>ADMIN</code> or <code>AG_DATA</code> users can create sectors with this API.</p>
+</div>
+<p>To create a sector data you can request the api endpoint <code>/api/sector/</code>:</p>
+<pre><code class="language-http">POST / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/sector/
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+Body: {
+    &quot;activity_sector&quot;: &quot;activity sector label&quot;,
+    &quot;description&quot;: &quot;activity sector description&quot;,
+}
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected user's access token.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Project_File/" class="btn btn-neutral float-left" title="Project File API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Types/" class="btn btn-neutral float-right" title="Types API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Project_File/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Types/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

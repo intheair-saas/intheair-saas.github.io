@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Haitam Aouad Idrissi" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Installation Guide - IntheCloud Backend Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Installation Guide";
+        var mkdocs_page_input_path = "installation/INSTALLATION.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/shell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/http.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/env.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../logoBlanc.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Repo Description</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../..#dependencies">Dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../..#contact">Contact</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Api</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/Authentication/">Authentication API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Authentication/#login">Login</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Authentication/#request">Request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Authentication/#response">Response</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Authentication/#data">Data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Authentication/#refresh">Refresh</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Authentication/#request_1">Request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Authentication/#response_1">Response</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/Company/">Company Endpoints</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Company/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Company/#single-company-data-companyid">Single company data : company/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Company/#all-companies-data-company">All Companies Data : company/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Company/#delete-company">Delete Company</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Company/#create-company">Create company</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Company/#update-company">Update company</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/Permissions/">Permissions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/Project/">Project Endpoints</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Project/#single-project-data-projectid">Single project data : project/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Project/#all-projects-data-project">All Projects Data : project/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project/#delete-project">Delete project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project/#create-project">Create project</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project/#update-project">Update project</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/Project_File/">Project File API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Project_File/#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../Api/Project_File/#geo_data">Geo_Data</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../Api/Project_File/#analytics">Analytics</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Project_File/#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#delete-project-file">Delete Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#upload-project-file">Upload Project File</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/Sector/">Sectors Endpoints</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Sector/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Sector/#single-sector-data-sectorid">Single sector data : sector/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Sector/#all-sectors-data-sector">All sectors Data : sector/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Sector/#delete-sector">Delete Sector</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Sector/#create-sector">Create Sector</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/Types/">Types API</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#project-types">Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Types/#single-project-type-data-projecttypeid">Single Project Type data : projecttype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Types/#all-project-types-data-projecttype">All Project Types Data : projecttype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#delete-project-types">Delete Project Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#create-project-type">Create Project Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#file-types">File Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#retrieve-data_1">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Types/#single-file-type-data-filetypeid">Single file type data : filetype/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Types/#all-file-types-data-filetype">All File Types Data : filetype/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#delete-file-type">Delete File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#create-file-type">Create File Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#data-types">Data Types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#retrieve-data_2">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#delete-datatype">Delete datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#create-datatype">Create datatype</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#file-extensions">File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#retrieve-data_3">Retrieve data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#delete-file-extensions">Delete File Extensions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Types/#create-file-extensions">Create File Extensions</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Api/User/">User Endpoints</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/User/#retrieve-data">Retrieve data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/User/#single-user-data-userid">Single user data : user/&lt;id&gt;</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/User/#all-users-data-user">All users Data : user/</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/User/#update-user-data">Update User data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/User/#delete-user">Delete User</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/User/#create-user">Create User</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/User/#change-password">Change Password</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Apps</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Apps/Authentication/">Authentication</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Apps/Permissions/">Permissions</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Contact</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/CONTACT/">Description</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/contact/CONTACT/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/contact/CONTACT/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/contact/CONTACT/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/contact/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Files</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/FILES/">Files App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#3-serializers">3. Serializers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/files/FILES/#4-scripts">4. Scripts</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Hubspot api</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/">Hubspot Api App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/hubspot_api/HUBSPOT_API/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/hubspot_api/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Raster</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/RASTER/">Raster App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/raster/RASTER/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/raster/RASTER/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/raster/RASTER/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Reports</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/MODELS/">MODELS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/REPORTS/">Reports App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/reports/REPORTS/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/reports/REPORTS/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/reports/REPORTS/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/reports/VIEWS/">VIEWS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">User</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">User App Models Documentation</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Models/#user-types">User Types</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/SERIALIZERS/">SERIALIZERS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/USER/">USER App</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/USER/#1-models">1. Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/USER/#2-views">2. Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/USER/#3-serializers">3. Serializers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Views/">User Views</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Views/#userdetail">UserDetail</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Architecture</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Architecture/Database/">Database</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Architecture/Functionnal/">Functionnal</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Installation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Installation Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#python-dependencies">Python dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#geospatial-dependencies">Geospatial dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rabbitmq">RabbitMQ</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#celery">Celery</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#email-server">Email server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#database">Database</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#debug-and-security">Debug and Security</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run-the-server">Run the server</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#init-the-data">Init the Data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run">Run</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">IntheCloud Backend Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Installation</li>
+      <li class="breadcrumb-item active">Installation Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="installation-guide">Installation Guide</h1>
+<p>This is the <strong>Intheair Saas Platform</strong> installation guide, follow the guide to have the backend up and running on your environement. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We suggest you to follow the installation to the end before running the server to avoid errors.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>we suppose that you are in a docker or in a virtual environement, create one before following the installation if not !</p>
+</div>
+<h2 id="python-dependencies">Python dependencies</h2>
+<p>All the django and python dependencies are added to the <code>requirement.txt</code>.
+To install the dependencies just run </p>
+<pre><code class="language-shell">pip install -r &lt;yourpath&gt;/requirements.txt
+</code></pre>
+<h2 id="geospatial-dependencies">Geospatial dependencies</h2>
+<p>After installing the python dependencies, we need to install some libraries and packages to use <strong>GDAL</strong> and <strong>GIS</strong> tools.
+First we need to run this command to install, directly or by dependency, the required geospatial libraries:</p>
+<pre><code class="language-shell">sudo apt-get install cmake binutils libproj-dev gdal-bin
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may be necessary to run the <strong>ldconfig</strong> command after installing each library. For example:
+<code>shell
+sudo make install
+sudo ldconfig</code></p>
+</div>
+<p>We will then have to install <strong>GEOS</strong>, a C++ library for performing geometric operations, and is the default internal geometry representation used by GeoDjango (it’s behind the « lazy » geometries). Specifically, the C API library is called (e.g., libgeos_c.so) directly from Python using ctypes.
+First, download GEOS from the GEOS website and untar the source archive:</p>
+<pre><code class="language-shell">wget https://download.osgeo.org/geos/geos-3.12.0.tar.bz2
+tar xjf geos-3.12.0.tar.bz2
+</code></pre>
+<p>Then we have to build and install the package:</p>
+<pre><code class="language-shell">cd geos-3.12.0
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build .
+sudo cmake --build . --target install
+</code></pre>
+<p>Then we will have to install <strong>GDAL</strong>, First download the latest GDAL release version and untar the archive:</p>
+<pre><code class="language-shell">wget https://download.osgeo.org/gdal/3.7.2/gdal-3.7.2.tar.gz
+tar xzf gdal-3.7.2.tar.gz
+</code></pre>
+<p>Then we have to build and install the package:</p>
+<pre><code class="language-shell">cd gdal-3.7.2
+mkdir build
+cd build
+cmake ..
+cmake --build .
+sudo cmake --build . --target install
+</code></pre>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you get any errors while trying to install the GIS dependencies, try troubleshooting your environment via this link <a href="https://docs.djangoproject.com/fr/4.2/ref/contrib/gis/install/#troubleshooting">Geodjango Troubleshooting</a>.</p>
+</div>
+<h2 id="rabbitmq">RabbitMQ</h2>
+<p>The backend uses <strong>celery</strong> in order to handle the async tasks, the celery library needs to connect to a messaging queue server in order to queue its tasks. To achieve that we need to install and run <strong>RabbitMQ</strong> a message queuing server and run it.
+For installing RabbitMQ on Linux just run this script and you are good to go:</p>
+<pre><code class="language-shell">#!/bin/sh
+
+sudo apt-get install curl gnupg apt-transport-https -y
+
+## Team RabbitMQ's main signing key
+curl -1sLf &quot;https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA&quot; | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg &gt; /dev/null
+## Community mirror of Cloudsmith: modern Erlang repository
+curl -1sLf https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key | sudo gpg --dearmor | sudo tee /usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg &gt; /dev/null
+## Community mirror of Cloudsmith: RabbitMQ repository
+curl -1sLf https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-server.9F4587F226208342.key | sudo gpg --dearmor | sudo tee /usr/share/keyrings/rabbitmq.9F4587F226208342.gpg &gt; /dev/null
+
+## Add apt repositories maintained by Team RabbitMQ
+sudo tee /etc/apt/sources.list.d/rabbitmq.list &lt;&lt;EOF
+## Provides modern Erlang/OTP releases
+##
+deb [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq-erlang/deb/ubuntu jammy main
+deb-src [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq-erlang/deb/ubuntu jammy main
+
+# another mirror for redundancy
+deb [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa2.novemberain.com/rabbitmq/rabbitmq-erlang/deb/ubuntu jammy main
+deb-src [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa2.novemberain.com/rabbitmq/rabbitmq-erlang/deb/ubuntu jammy main
+
+## Provides RabbitMQ
+##
+deb [signed-by=/usr/share/keyrings/rabbitmq.9F4587F226208342.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq-server/deb/ubuntu jammy main
+deb-src [signed-by=/usr/share/keyrings/rabbitmq.9F4587F226208342.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq-server/deb/ubuntu jammy main
+
+# another mirror for redundancy
+deb [signed-by=/usr/share/keyrings/rabbitmq.9F4587F226208342.gpg] https://ppa2.novemberain.com/rabbitmq/rabbitmq-server/deb/ubuntu jammy main
+deb-src [signed-by=/usr/share/keyrings/rabbitmq.9F4587F226208342.gpg] https://ppa2.novemberain.com/rabbitmq/rabbitmq-server/deb/ubuntu jammy main
+EOF
+
+## Update package indices
+sudo apt-get update -y
+
+## Install Erlang packages
+sudo apt-get install -y erlang-base \
+                        erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
+                        erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \
+                        erlang-runtime-tools erlang-snmp erlang-ssl \
+                        erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
+
+## Install rabbitmq-server and its dependencies
+sudo apt-get install rabbitmq-server -y --fix-missing
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>To configure our environment please refer to the <strong>/intheair/.env</strong> file.</p>
+<h3 id="celery">Celery</h3>
+<p>To use Celery we need to create a RabbitMQ user, a virtual host and allow that user access to that virtual host:</p>
+<pre><code class="language-shell">sudo rabbitmqctl add_user &lt;USER&gt; &lt;PASSWORD&gt;
+sudo rabbitmqctl add_vhost &lt;HOST NAME&gt;
+sudo rabbitmqctl set_user_tags &lt;USER&gt; &lt;TAG&gt;
+sudo rabbitmqctl set_permissions -p &lt;HOST NAME&gt; &lt;USER&gt; &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;
+</code></pre>
+<p>Substitute in appropriate values for myuser, mypassword and myvhost above.
+See the RabbitMQ <a href="https://www.rabbitmq.com/access-control.html">access control</a> documentation or the <a href="https://www.rabbitmq.com/admin-guide.html">Admin Guide</a> for more information.</p>
+<h3 id="email-server">Email server</h3>
+<p>The backend uses an emailing functionality, you can update the email section of the <strong>.env</strong> file to connect the backend to the <strong>smpt</strong> server used in the deployment</p>
+<pre><code class="language-env">EMAIL_HOST=&lt;THE EMAIL SERVER HOST&gt;
+EMAIL_PORT=&lt;THE EMAIL SERVER PORT&gt;
+EMAIL_HOST_USER=&lt;THE EMAIL SERVER USER&gt;
+EMAIL_HOST_PASSWORD=&lt;THE EMAIL SERVER APP PASSWORD&gt;
+CONTACT_EMAIL=&lt;THE CONTACT EMAIL ADDRESS&gt;
+DEFAULT_FROM_USER=&lt;DEFAULT EXPEDITOR EMAIL (WILL PROBABLY BE THE CONTACT EMAIL ADDRESS)&gt;
+</code></pre>
+<h3 id="database">Database</h3>
+<p>The database used in our backend is a <strong>postgresql</strong> database, it needs to support <strong>GIS</strong> and <strong>raster</strong> functionalities. Make sure to install <strong>postgis</strong> and <strong>raster</strong> libraries in the database created (you can contact your database administrator to add the plugins).
+After creating and configuring the database you need to configure the backend to connect to it. Fill the variables in the <strong>.env</strong> file to allow the connection:</p>
+<pre><code class="language-env">DB_HOST=&lt;DATABASE URL/HOST&gt;
+DB_USERNAME=&lt;USERNAME&gt;
+DB_PASSWORD=&lt;PASSWORD&gt;
+DB_NAME=&lt;DATABASE NAME&gt;
+DB_PORT=&lt;DATABASE PORT&gt;
+</code></pre>
+<h3 id="debug-and-security">Debug and Security</h3>
+<p>For security purposes change the environment variables in the <strong>.env</strong> file to restrict/allow network access to the backend:</p>
+<pre><code class="language-env"># The generated DJANGO SECRET KEY
+SECRET_KEY=django-insecure-mt009#ax-n)0o@$=o31pg)e5$!xvx(^7cjdl(kf^6#yeo-tl)%
+# Set to True to have more details about the errors, or False when put to production
+DEBUG=False
+# the allowed DNS that have authorization to connect to the backend (it should be the Database DNS and Frontend DNS)
+ALLOWED_HOSTS=[&lt;Front_DNS:PORT&gt;, &lt;DataBase_DNS:PORT&gt;]
+# The allowed origins that can send form data to our backend (should be the Frontend DNS)
+ALLOWED_CRSF_ORIGINS=&lt;Front_DNS:PORT&gt;
+</code></pre>
+<h2 id="run-the-server">Run the server</h2>
+<h3 id="init-the-data">Init the Data</h3>
+<blockquote>
+<p>[!WARNING]
+Don't run this section if you are using the always database pre-configured in this repository, only run it if you are using a new empty database !
+To run the server we need to first migrate the data base:</p>
+</blockquote>
+<pre><code class="language-shell">python manage.py makemigrations
+python manage.py migrate
+</code></pre>
+<p>Then we have to create a super admin, run this command and follow the instructions:</p>
+<pre><code class="language-shell">python manage-py createsuperuser &lt;USER&gt;
+</code></pre>
+<p>We then have to populate the data base with the required data. We first open a django shell:</p>
+<pre><code class="language-shell">python manage.py shell
+</code></pre>
+<p>Then we can use the built in script to create the data:</p>
+<pre><code class="language-python">from files import script
+script.add_data_type()
+script.add_drone_fields()
+</code></pre>
+<p>We then have to attribute to our user the ADMIN permissions and set an email address to him. 
+in the opened shell enter the commands:</p>
+<pre><code class="language-python">from user.models import User
+user = User.objects.get(username=&lt;USER&gt;)
+user.email = '&lt;EMAIL&gt;'
+user.user_type = 'ADMIN'
+user.save()
+</code></pre>
+<p>You can now exit the shell.</p>
+<h3 id="run">Run</h3>
+<p>To run the backend app you need to run the <strong>Django server</strong>, there <strong>RabbitMQ server</strong> and <strong>Celery</strong>.
+in the <code>/intheair/</code> directory run this 3 commands in separate terminals:</p>
+<p>1- Start Django server:</p>
+<pre><code class="language-shell">python manage.py runserver
+</code></pre>
+<p>2- Start RabbitMQ:</p>
+<pre><code class="language-shell">sudo rabbitmq-server start
+</code></pre>
+<p>3- Start Celery:</p>
+<pre><code class="language-shell">celery -A intheair worker
+</code></pre>
+<p>I hope the installation, configuration and running of the server went smoothly. Contact us if you ever have any problem or issue with the installation that the documentation didn't help you solve.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../Architecture/Functionnal/" class="btn btn-neutral float-left" title="Functionnal"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../Architecture/Functionnal/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
