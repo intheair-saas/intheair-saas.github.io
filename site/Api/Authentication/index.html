@@ -122,20 +122,24 @@
     <li class="toctree-l2"><a class="reference internal" href="../Project_File/#retrieve-data">Retrieve data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="../Project_File/#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#geo_data">Geo_Data</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#analytics">Analytics</a>
+    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#raster-file">Raster file</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#retreive-raster-id">Retreive raster id:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#retreive-raster-tiles">Retreive raster tiles</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="../Project_File/#delete-project-file">Delete Project File</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#upload-project-file">Upload Project File</a>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#uploadcreate-a-project-file">Upload/Create a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#process-a-project-file">Process a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#projectfile-layerorder-on-the-map">ProjectFile LayerOrder on the map</a>
     </li>
     </ul>
                   </li>
@@ -268,9 +272,13 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">SERIALIZERS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">Serializers</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/VIEWS/">VIEWS</a>
                 </li>
@@ -298,7 +306,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Raster</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/RASTER/">Raster App</a>
     <ul>
@@ -338,10 +348,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">User</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">User App Models Documentation</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">Models</a>
     <ul>
-    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Models/#user-types">User Types</a>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/SERIALIZERS/">SERIALIZERS</a>
@@ -437,8 +445,11 @@
 <p>This section is a documentation describing the usage of the Auth endpoints API.</p>
 </div>
 <h2 id="login">Login</h2>
+<p>The login system is based on a <code>JWT</code> systeme, that can be explained in the graph below:</p>
 <p>To login to the backend server and retrieve the data accessible by the user, a post request should be sent by the user to the <code>/api/login</code> endpoint:</p>
+<p><img alt="Jason Web Token" src="../../assets/JWT.jpg" title="Jason Web Token" /></p>
 <h3 id="request">Request</h3>
+<p>In order to login to the API you need to send a <code>POST</code> request containing the <code>email</code> and <code>password</code> of the user.</p>
 <pre><code class="language-http">POST / HTTP/1.1
 Host: &lt;BASE_URL&gt;/api/login/
 Header:
@@ -459,7 +470,7 @@ Body: {
 <pre><code class="language-json">{&quot;refresh&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5OTEwMTA0MiwiaWF0IjoxNjk2NTA5MDQyLCJqdGkiOiI5ZjA3NjdjMDNmZmM0ZTI3YmQxODYzMTJiZmI2YjdhZiIsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoiaGFpdGFtIiwidXNlcl90eXBlIjoiQURNSU4ifQ.vzuSpBGo9SxNmHhCpfUkgxZWRM20dvUl5eJQCStxW1M&quot;,&quot;access&quot;:&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk2NTA5NDAyLCJpYXQiOjE2OTY1MDkwNDIsImp0aSI6ImM0Y2EzMWFhMjc1ZTQxOTQ4ZTk1MDY0YWJmNWQ3NTQ3IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJoYWl0YW0iLCJ1c2VyX3R5cGUiOiJBRE1JTiJ9.t8Dw6dCRVWIJf6yJOTALjCbBfgUhdfUC3Swtm2-KP5g&quot;}
 </code></pre>
 <ul>
-<li><code>access</code> : The access token is used for the authentication process on each request, it expires every <strong>5 minutes</strong> and needs to be refreshed with the refresh token generated with it.</li>
+<li><code>access</code> : The access token is used for the authentication process on each request, it expires every <strong>5 minutes</strong> (to be configured in the backend setup)and needs to be refreshed with the refresh token generated with it.</li>
 <li><code>refresh</code> : The refresh token is used to refresh the access token and keep the session open. A refresh token gets expired after 30 days</li>
 </ul>
 <h3 id="data">Data</h3>

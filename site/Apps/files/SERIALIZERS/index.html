@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Haitam Aouad Idrissi" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>SERIALIZERS - IntheCloud Backend Documentation</title>
+    <title>Serializers - IntheCloud Backend Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "SERIALIZERS";
+        var mkdocs_page_name = "Serializers";
         var mkdocs_page_input_path = "Apps/files/SERIALIZERS.md";
         var mkdocs_page_url = null;
       </script>
@@ -122,20 +122,24 @@
     <li class="toctree-l2"><a class="reference internal" href="../../../Api/Project_File/#retrieve-data">Retrieve data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="../../../Api/Project_File/#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../../../Api/Project_File/#geo_data">Geo_Data</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="../../../Api/Project_File/#analytics">Analytics</a>
+    <li class="toctree-l3"><a class="reference internal" href="../../../Api/Project_File/#raster-file">Raster file</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../../Api/Project_File/#retreive-raster-id">Retreive raster id:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../Api/Project_File/#retreive-raster-tiles">Retreive raster tiles</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="../../../Api/Project_File/#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="../../../Api/Project_File/#delete-project-file">Delete Project File</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="../../../Api/Project_File/#upload-project-file">Upload Project File</a>
+    <li class="toctree-l2"><a class="reference internal" href="../../../Api/Project_File/#uploadcreate-a-project-file">Upload/Create a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../../Api/Project_File/#process-a-project-file">Process a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../../Api/Project_File/#projectfile-layerorder-on-the-map">ProjectFile LayerOrder on the map</a>
     </li>
     </ul>
                   </li>
@@ -268,9 +272,13 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">SERIALIZERS</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Serializers</a>
+    <ul class="current">
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../VIEWS/">VIEWS</a>
                 </li>
@@ -298,7 +306,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Raster</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../raster/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../raster/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../raster/RASTER/">Raster App</a>
     <ul>
@@ -338,10 +348,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">User</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../user/Models/">User App Models Documentation</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../user/Models/">Models</a>
     <ul>
-    <li class="toctree-l3"><a class="reference internal" href="../../user/Models/#user-types">User Types</a>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../user/SERIALIZERS/">SERIALIZERS</a>
@@ -423,7 +431,7 @@
     <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Apps</li>
           <li class="breadcrumb-item">Files</li>
-      <li class="breadcrumb-item active">SERIALIZERS</li>
+      <li class="breadcrumb-item active">Serializers</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -432,12 +440,214 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="serializers">Serializers</h1>
+<h1 id="filechunkserializer">FileChunkSerializer</h1>
+<p>This is the Serializer that handles files uploaded by chunks.
+It first receive the first chunk and create the file instance using the <code>create()</code> function, then for every other chunk received it updates the instance using the <code>update()</code> function.</p>
+<h2 id="create">create()</h2>
+<p>This function receive the first chunk of the uploaded file and create an instance of the <code>FileChunkSerializer</code> that will represent the uploaded file. If the file has only one chunk, the file is directly created using that chunk and the <code>file</code> field is filled with the created file url.</p>
+<pre><code class="language-python">def create(self, validated_data):
+        file = validated_data[&quot;chunk_file&quot;]
+        chunk_index = validated_data[&quot;chunk_index&quot;]
+        nbr_chunk = validated_data[&quot;nbr_chunk&quot;]
+        fileName = validated_data[&quot;file_name&quot;]
+        project_file = validated_data[&quot;to_project_files&quot;]
+        # create the FileChunk instance
+        file_obj = FileChunk.objects.create(
+            cumulated_chunk = 1,
+            nbr_chunk = nbr_chunk,
+            file_name = fileName,
+            to_project_files = project_file
+        )
+
+        file_data = file.read()
+        dir_name = project_file.project.name +'/'+ project_file.file_type.label +'/' +project_file.name + '/' +fileName.split('.')[0]
+        file_id = f&quot;{fileName}_{chunk_index + 1}&quot;
+        # create directory if not exist
+        if not os.path.exists(f'buff/{dir_name}/tmp'): 
+            os.makedirs(f'buff/{dir_name}/tmp')
+        temp_file_path = &quot;&quot;
+        # if the file has only one chunk it creates the file directly
+        if nbr_chunk == 1:
+            temp_file_path = f'buff/{dir_name}/{fileName}'
+            temp_google_path = f'projects/{project_file.project.proj_type.label}/{dir_name}/{fileName}'
+        # else it create a temp file for the chunk received
+        else:
+            temp_file_path = f'buff/{dir_name}/tmp/{file_id}'
+            temp_google_path = f'projects/{project_file.project.proj_type.label}/{dir_name}/tmp/{file_id}'
+
+        # creating the file in google cloud storage and local storage
+        with open(temp_file_path, 'wb') as temp_file:
+            temp_file.write(file_data)
+
+        with default_storage.open(temp_google_path,'wb') as google_temp_file:
+            google_temp_file.write(file_data)
+
+        if nbr_chunk == 1:
+
+            # retrieve created file url if the file has only one chunk (the chunk created is the file itself)
+            file_obj.file = default_storage.url(temp_google_path)
+            file_obj.save()
+        return file_obj
+</code></pre>
+<h2 id="update">update()</h2>
+<p>this function receive the remaining chunks of an uploaded file, it the create a temperary file uing the chunk's data received. If all the file's chunks are received, this function proceed to group the chunks and create a final file from their data. It then fill the  <code>file</code> field  with the created file url.</p>
+<pre><code class="language-python">def update(self, instance, validated_data):
+        file = validated_data[&quot;chunk_file&quot;]
+        chunk_index = validated_data[&quot;chunk_index&quot;]
+        # update number of chunks received
+        instance.cumulated_chunk = instance.cumulated_chunk +1
+        file_id = f&quot;{instance.file_name}_{chunk_index + 1}&quot;
+        # write the received chunk data to a temp file
+        dir_name = instance.to_project_files.project.name +'/'+ instance.to_project_files.file_type.label + '/' +instance.to_project_files.name + '/' +instance.file_name.split('.')[0]
+        temp_file_path = f'buff/{dir_name}/tmp/{file_id}'
+        temp_google_path = f'projects/{instance.to_project_files.project.proj_type.label}/{dir_name}/tmp/{file_id}'
+
+        # writing the chunks
+        with open(temp_file_path, 'wb') as temp_file:
+            temp_file.write(file.read())
+
+        with default_storage.open(temp_google_path, 'wb') as google_temp_file:
+            google_temp_file.write(file.read())
+
+        # save the instance modifications
+        instance.save()
+
+        # if we received all the chunks for a file
+        if instance.cumulated_chunk == instance.nbr_chunk:
+            # create the combined/final file path
+            final_file_path = f'buff/{dir_name}/{instance.file_name}'
+            final_google_path = f'projects/{ instance.to_project_files.project.proj_type.label}/{dir_name}/{instance.file_name}'
+            print(&quot;combining chunks&quot;)
+
+            # Combining chunks in local storage to form the final file
+            with open(final_file_path, 'wb') as final_file:
+                # reading all the chunks created 
+                for i in range(instance.nbr_chunk):
+                    chunk_file_path = f'buff/{dir_name}/tmp/{instance.file_name}_{i + 1}'
+                    print(f&quot;reading chunk {instance.file_name}_{i + 1}&quot;)
+                    with open(chunk_file_path, 'rb') as chunk_file:
+                        # writing the chunk's data to the final file
+                        final_file.write(chunk_file.read())
+            print(&quot;combining chunks in default storage&quot;)
+
+             # Combining chunks in Cloud storage to form the final file
+            with default_storage.open(final_google_path, 'wb') as google_final_file:
+
+                # reading all the chunks created 
+                for i in range(instance.nbr_chunk):
+                    chunk_file_path = f'projects/{instance.to_project_files.project.proj_type.label}/{dir_name}/tmp/{instance.file_name}_{i + 1}'
+                    print(f&quot;reading chunk from default storage {instance.file_name}_{i + 1}&quot;)
+
+                    # writing the chunk's data to the final file
+                    with default_storage.open(chunk_file_path, 'rb') as chunk_file:
+                        google_final_file.write(chunk_file.read())
+
+                    # delete the chunk read
+                    default_storage.delete(chunk_file_path)
+
+            # retrieve created file url
+            instance.file = default_storage.url(final_google_path)
+
+            instance.save()
+
+        return instance
+</code></pre>
+<h1 id="projectfilechunkserializer">ProjectFileChunkSerializer</h1>
+<p>This serializer creates a <code>ProjectFile</code> instance, this instance is linked to multiple <code>FileChunk</code> therefor it should be created before adding the <code>FileChunkSerializer</code>  instances</p>
+<h1 id="datatypeserializer">DataTypeSerializer</h1>
+<p>This serializer creates a  <code>DataType</code> object, it needs either a <code>xlsx</code> file, a <code>csv</code> file or a collection of files forming a <code>shapefile</code> file. The data is then extracted form the files in order to extract the fields names and type and create a <code>DataType</code> and a model accordingly. </p>
+<h2 id="create_1">create()</h2>
+<p>This function uses an uploaded file and request parameters to create a <code>DataType</code> object accordingly, then a model is generated from the extracted data and then migrated and saved as a <a href="/Apps/files/MODELS/#customdatatype"><code>CustomDataType</code></a> instance for future migration purposes, the model expression is also saved in the <code>customModels.custom_models</code> file.</p>
+<h1 id="functions-used">Functions used</h1>
+<h2 id="upload_raster">upload_raster()</h2>
+<p>This function is used to extract a pyramid view from the raster file uploaded and save it as a <code>RasterLayer</code> object. <a href="https://developer.myptv.com/en/documentation/raster-maps-api/concepts/tiles">see what pyramid view means</a></p>
+<h3 id="raster_save_data_task">raster_save_data_task()</h3>
+<p>This function is a celery task used to process the uploaded <code>raster</code> file. It is run in background, and its job is to read the pixel matrix of raster file, and create the pyramid view from it saving the newly created matrixes to the database as <code>RasterTile</code> objects.</p>
+<h2 id="create_color_map">create_color_map()</h2>
+<p>This function is used to read a .SLD file and extract the color map from it creating a <code>Legend</code> object and assigning this object to the newly created  <code>RatsterLayer</code>.</p>
+<h2 id="upload_shapefile">upload_shapefile()</h2>
+<p>This function collect the <code>shapefile</code> file uploaded and the <code>DataType</code> of the <code>ProjectFile</code> and then calls the de <a href="#save_geo_data"><code>save_geo_data</code></a> function to extract the file's data.</p>
+<h2 id="upload_shapefile_images">upload_shapefile_images()</h2>
+<p>This function collect the <code>shapefile</code> file uploaded and the <code>DataType</code> of the <code>ProjectFile</code> and then calls the de <a href="#save_geo_data"><code>save_geo_data</code></a> function to extract the file's data. It then retrieves the url for each picture uploaded with the shapefile and replace the corresponding path for the picture in the shapefile with the url retrieved.</p>
+<h2 id="save_geo_data">save_geo_data()</h2>
+<p>This function extract the data from an <code>shapefile</code> file of a <code>ProjectFile</code> object and then save this data in the table related to the <code>DataType</code> of this object using the <code>mapping</code> object to map the attribute name of the <code>shapefile</code> to the column name of the table used.</p>
+<pre><code class="language-python">def save_geo_data(path, object_type, projectfile, verbose=True):
+    this_path = os.path.join(Path(__file__).resolve().parent.parent / 'buff', path)
+    # retrieving the custom model linked to the Contenttype instence of this projectfile
+    model = apps.get_model(app_label=object_type.app_label, model_name=object_type.model)
+    mapping = {}
+    if model == TopoData:
+        mapping = topoData_mapping
+    elif model == IlotDeChalleurData:
+        mapping = ilotDeChalleur_mapping
+    else:
+        mapping = CustomDataType.objects.get(table_name=object_type.model).mapping
+    lm = CustomLayerMapping(model, this_path, mapping)
+    lm.save(projectfile=projectfile,strict=True, verbose=False)
+
+</code></pre>
+<h2 id="upload_xlsx">upload_xlsx()</h2>
+<p>This function collect the <code>xlsx</code> file uploaded and the <code>DataType</code> of the <code>ProjectFile</code> and then calls the de <a href="#save_excel"><code>save_excel</code></a> function to extract the file's data.</p>
+<h2 id="save_excel">save_excel()</h2>
+<p>This function extract the data from an <code>xlsx</code> file of a <code>ProjectFile</code> object and then save this data in the table related to the <code>DataType</code> of this object</p>
+<pre><code class="language-python">def save_excel(path, object_type, projectfile):
+    this_path = os.path.join(Path(__file__).resolve().parent.parent / 'buff', path)
+    model = apps.get_model(app_label=object_type.app_label, model_name=object_type.model)
+    excel_data_df = pandas.read_excel(this_path)
+    new_dict = excel_data_df.to_dict('records')
+    # objs= json.loads(json_str)
+    for obj in new_dict:
+        new_obj = {}
+        for key in obj:
+            new_obj[str(key).lower().strip().replace(&quot; &quot;, &quot;_&quot;)] = obj[key]
+        test = model.objects.create(**new_obj)
+        test.project_file = projectfile
+        test.save()
+
+</code></pre>
+<h2 id="upload_csv">upload_csv()</h2>
+<p>This function collect the <code>csv</code> file uploaded and the <code>DataType</code> of the <code>ProjectFile</code> and then call the de <a href="#save_csv"><code>save_csv</code></a> function to extract the file's data.</p>
+<h2 id="save_csv">save_csv()</h2>
+<p>This function extract the data from an <code>csv</code> file of a <code>ProjectFile</code> object and then save this data in the table related to the <code>DataType</code> of this object</p>
+<pre><code class="language-python">def save_csv(path, object_type, projectfile):
+    this_path = os.path.join(Path(__file__).resolve().parent.parent / 'buff', path)
+    model = apps.get_model(app_label=object_type.app_label, model_name=object_type.model)
+    excel_data_df = pandas.read_csv(this_path)
+    new_dict = excel_data_df.to_dict('records')
+    # objs= json.loads(json_str)
+    for obj in new_dict:
+        new_obj = {}
+        for key in obj:
+            key_name = str(key).lower().strip().replace(&quot; &quot;, &quot;_&quot;)
+            if key_name[0] == &quot;\&quot;&quot;:
+                key_name = key_name[1:]
+            if key_name[-1] == &quot;\&quot;&quot;:
+                key_name = key_name[:-1]
+            new_obj[key_name] = obj[key]
+        test = model.objects.create(**new_obj)
+        test.project_file = projectfile
+        test.save()
+</code></pre>
+<h2 id="create_datatype_shapefile">create_datatype_shapefile()</h2>
+<p>This function extracts the attributes from a shapefile and create a model from it saving it as a <code>CustomDataType</code> instance.</p>
+<h2 id="create_datatype_csv">create_datatype_csv()</h2>
+<p>This function extracts the attributes from a file csv and create a model from it saving it as a <code>CustomDataType</code> instance.</p>
+<h2 id="create_datatype_excel">create_datatype_excel()</h2>
+<p>This function extracts the attributes from an excel file and create a model from it saving it as a <code>CustomDataType</code> instance.</p>
+<h2 id="create_model">create_model()</h2>
+<p>This function uses a <code>CustomDataType</code> and returns a model from it.</p>
+<h2 id="migrate_datatype">migrate_datatype()</h2>
+<p>This function reads  the <code>CustomDataType</code> object created, creates a model from it and saving the model expression (The model Class definition) in the <code>customModels.custom_models</code> file, then running a migration in order to migrate the model created and synchronize the table with the new <code>DataType</code>. This newly created model is available on runtime and is deleted on server restart, but writing the model expression in the <code>customModels.custom_models</code> keeps the model active even after restarting the server</p>
+<h2 id="migrate_all">migrate_all()</h2>
+<p>This function reads all the <code>CustomDataType</code> objects created, creates and saves the model expressions (The model Class definitions) in the <code>customModels.custom_models</code> file. This function is only used to sync the written models expressions in the <code>customModels.custom_models</code> with the <code>CustomDataType</code> objects available, and therefor its main purpose is to remove the deleted <code>DataType</code> objects from the <code>customModels.custom_models</code> file. The server must be restarted after the function call in order to take the <code>customModels.custom_models</code> changes into consideration. You can then run <code>makemigrations</code> and <code>migrate</code> after the server is restarted, or just call the <code>/api/refresh-datatype/</code> api endpoint while de server is on, in order to sync the models with the database.</p>
+<p>!! warning
+    If a model is not found in the <code>customModels.custom_models</code> file, it's table will be deleted on migrations and therefor all the data for this model (<code>DataType</code>) will be lost. Be careful when running a migration after editing this file.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../MODELS/" class="btn btn-neutral float-left" title="MODELS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../MODELS/" class="btn btn-neutral float-left" title="Models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../VIEWS/" class="btn btn-neutral float-right" title="VIEWS">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

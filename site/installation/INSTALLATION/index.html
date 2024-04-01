@@ -122,20 +122,24 @@
     <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#retrieve-data">Retrieve data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="../../Api/Project_File/#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../../Api/Project_File/#geo_data">Geo_Data</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="../../Api/Project_File/#analytics">Analytics</a>
+    <li class="toctree-l3"><a class="reference internal" href="../../Api/Project_File/#raster-file">Raster file</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../Api/Project_File/#retreive-raster-id">Retreive raster id:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../Api/Project_File/#retreive-raster-tiles">Retreive raster tiles</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="../../Api/Project_File/#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#delete-project-file">Delete Project File</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#upload-project-file">Upload Project File</a>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#uploadcreate-a-project-file">Upload/Create a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#process-a-project-file">Process a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../Api/Project_File/#projectfile-layerorder-on-the-map">ProjectFile LayerOrder on the map</a>
     </li>
     </ul>
                   </li>
@@ -268,9 +272,13 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">SERIALIZERS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">Serializers</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/VIEWS/">VIEWS</a>
                 </li>
@@ -298,7 +306,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Raster</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/RASTER/">Raster App</a>
     <ul>
@@ -338,10 +348,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">User</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">User App Models Documentation</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">Models</a>
     <ul>
-    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Models/#user-types">User Types</a>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/SERIALIZERS/">SERIALIZERS</a>
@@ -556,7 +564,7 @@ CONTACT_EMAIL=&lt;THE CONTACT EMAIL ADDRESS&gt;
 DEFAULT_FROM_USER=&lt;DEFAULT EXPEDITOR EMAIL (WILL PROBABLY BE THE CONTACT EMAIL ADDRESS)&gt;
 </code></pre>
 <h3 id="database">Database</h3>
-<p>The database used in our backend is a <strong>postgresql</strong> database, it needs to support <strong>GIS</strong> and <strong>raster</strong> functionalities. Make sure to install <strong>postgis</strong> and <strong>raster</strong> libraries in the database created (you can contact your database administrator to add the plugins).
+<p>The database used in our backend is a <strong>postgresql</strong> database, it needs to support <strong>GIS</strong> and <strong>raster</strong> functionalities. Make sure to install <strong>postgis</strong> and <strong>raster</strong> extensions  in the database created (you can contact your database administrator to add the plugins).
 After creating and configuring the database you need to configure the backend to connect to it. Fill the variables in the <strong>.env</strong> file to allow the connection:</p>
 <pre><code class="language-env">DB_HOST=&lt;DATABASE URL/HOST&gt;
 DB_USERNAME=&lt;USERNAME&gt;
@@ -577,39 +585,38 @@ ALLOWED_CRSF_ORIGINS=&lt;Front_DNS:PORT&gt;
 </code></pre>
 <h2 id="run-the-server">Run the server</h2>
 <h3 id="init-the-data">Init the Data</h3>
-<blockquote>
-<p>[!WARNING]
-Don't run this section if you are using the always database pre-configured in this repository, only run it if you are using a new empty database !
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don't run this section if you are using the always database pre-configured in this repository, only run it if you are using a new empty database !
 To run the server we need to first migrate the data base:</p>
-</blockquote>
+</div>
 <pre><code class="language-shell">python manage.py makemigrations
 python manage.py migrate
 </code></pre>
-<p>Then we have to create a super admin, run this command and follow the instructions:</p>
-<pre><code class="language-shell">python manage-py createsuperuser &lt;USER&gt;
+<p>Then we have to create a super admin to manage the django admin section if needed, run this command and follow the instructions:</p>
+<pre><code class="language-shell">python manage.py createsuperuser &lt;USER&gt;
 </code></pre>
 <p>We then have to populate the data base with the required data. We first open a django shell:</p>
 <pre><code class="language-shell">python manage.py shell
 </code></pre>
 <p>Then we can use the built in script to create the data:</p>
-<pre><code class="language-python">from files import script
-script.add_data_type()
-script.add_drone_fields()
+<pre><code class="language-python">from files import script as fs
+from user import script as us
+fs.add_data_type()
+us.init_data_base()
 </code></pre>
-<p>We then have to attribute to our user the ADMIN permissions and set an email address to him. 
-in the opened shell enter the commands:</p>
-<pre><code class="language-python">from user.models import User
-user = User.objects.get(username=&lt;USER&gt;)
-user.email = '&lt;EMAIL&gt;'
-user.user_type = 'ADMIN'
-user.save()
-</code></pre>
+<p>3 users have been created with this command:</p>
+<ul>
+<li><code>CLIENT</code> type user : {email:client@gmail.com, password:intheair123}</li>
+<li><code>ADMIN</code> type user : {email:admin@gmail.com, password:intheair123}</li>
+<li><code>AG_DATA</code> type user : {email:data@gmail.com, password:intheair123}</li>
+</ul>
 <p>You can now exit the shell.</p>
 <h3 id="run">Run</h3>
 <p>To run the backend app you need to run the <strong>Django server</strong>, there <strong>RabbitMQ server</strong> and <strong>Celery</strong>.
 in the <code>/intheair/</code> directory run this 3 commands in separate terminals:</p>
 <p>1- Start Django server:</p>
-<pre><code class="language-shell">python manage.py runserver
+<pre><code class="language-shell">python manage.py runserver --noreload
 </code></pre>
 <p>2- Start RabbitMQ:</p>
 <pre><code class="language-shell">sudo rabbitmq-server start

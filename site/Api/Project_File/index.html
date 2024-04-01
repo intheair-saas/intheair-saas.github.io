@@ -122,20 +122,24 @@
     <li class="toctree-l2"><a class="reference internal" href="#retrieve-data">Retrieve data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#geo_data">Geo_Data</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#analytics">Analytics</a>
+    <li class="toctree-l3"><a class="reference internal" href="#raster-file">Raster file</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#retreive-raster-id">Retreive raster id:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#retreive-raster-tiles">Retreive raster tiles</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#delete-project-file">Delete Project File</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#upload-project-file">Upload Project File</a>
+    <li class="toctree-l2"><a class="reference internal" href="#uploadcreate-a-project-file">Upload/Create a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#process-a-project-file">Process a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#projectfile-layerorder-on-the-map">ProjectFile LayerOrder on the map</a>
     </li>
     </ul>
                   </li>
@@ -268,9 +272,13 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">SERIALIZERS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">Serializers</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/VIEWS/">VIEWS</a>
                 </li>
@@ -298,7 +306,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Raster</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/RASTER/">Raster App</a>
     <ul>
@@ -338,10 +348,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">User</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">User App Models Documentation</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">Models</a>
     <ul>
-    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Models/#user-types">User Types</a>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/SERIALIZERS/">SERIALIZERS</a>
@@ -450,17 +458,56 @@ Header:
 <li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
 </ul>
 <p>This endpoints response is a json object that contains the project file's data, the project depends on the data type used by the project file:</p>
-<h4 id="geo_data">Geo_Data</h4>
-<pre><code>TO ADD LATER
-</code></pre>
-<h4 id="analytics">Analytics</h4>
-<pre><code>TO ADD LATER
-</code></pre>
 <ul>
+<li>If the file is a <code>shapefile</code> it returns a GEOJson Object</li>
 <li>
-<h3 id="all-project-files-of-a-project-projectfileid">All Project Files of a project : <code>projectfile/&lt;id&gt;</code></h3>
+<p>If the file is a <code>ANALYTICS</code> file type, it returns a JSON object containing the file's data</p>
+</li>
+<li>
+<h3 id="raster-file">Raster file</h3>
 </li>
 </ul>
+<p>To display the raster file on a map you need to retreive the raster <code>id</code> from the project file, then use the Raster Tile API point to retreive the raster tiles depending on <code>x</code>, <code>y</code>, and <code>zoom</code> of the map</p>
+<h4 id="retreive-raster-id">Retreive raster id:</h4>
+<p>to retreive the raster <code>id</code> from the project file you need to call this API endpoint</p>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/rasterdata/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
+<li><code>&lt;id&gt;</code> : id of the project file from whom you want to retrieve the rater id .</li>
+</ul>
+<p>The response is as follow :</p>
+<pre><code class="language-json">{
+    &quot;project_file&quot;: 2,
+    &quot;raster&quot;:36,
+    &quot;lon&quot;:,
+    &quot;lat&quot;:,
+}
+</code></pre>
+<ul>
+<li><code>raster</code> : the raster layer id</li>
+</ul>
+<h4 id="retreive-raster-tiles">Retreive raster tiles</h4>
+<p>to retreive the tiles of a raster layer you can use this API endpoint:</p>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api/raster/tiles/&lt;layer&gt;/&lt;z&gt;/&lt;x&gt;/&lt;y&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<ul>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
+<li><code>&lt;layer&gt;</code> : id of the raster layer, retreived with the <code>/api/rasterdata/&lt;id&gt;</code> request .</li>
+<li><code>&lt;x&gt;</code> : the x position of the map.</li>
+<li><code>&lt;y&gt;</code> : the y position of the map .</li>
+<li><code>&lt;z&gt;</code> : the zomm level of the map.</li>
+</ul>
+<p>This request returns the tile of the raster at the position <x>, <y>, and at the zoom level <z> as an image. You can use this endpoint tp retreive a TileLayer using other libraries like <code>Leadlet</code>
+- ### All Project Files of a project : <code>projectfile/&lt;id&gt;</code></p>
 <p>To retrieve the list of all the project files and their data at once you can request the api endpoint <code>/api/projectfile/&lt;id&gt;/</code>:</p>
 <pre><code class="language-http">GET / HTTP/1.1
 Host: &lt;BASE_URL&gt;/api/projectfile/&lt;id&gt;/
@@ -475,55 +522,51 @@ Header:
 <p>This endpoint response is a list of json objects that contains project files data (The list of all project files):</p>
 <pre><code class="language-json">[
     {
-        &quot;id&quot;:1,
-        &quot;name&quot;:&quot;shapefile&quot;,
-        &quot;description&quot;:&quot;Shapefiles for geodata&quot;,
-        &quot;file_type&quot;:&quot;Geo_File&quot;,
-        &quot;data_type&quot;:2,
-        &quot;project&quot;:2,
-        &quot;files&quot;:[
-            {
-                &quot;id&quot;:1,
-                &quot;file_type&quot;:&quot;shapefile&quot;,
-                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shx&quot;,
-                &quot;to_project_files&quot;:1
-            },
-            {
-                &quot;id&quot;:2,
-                &quot;file_type&quot;:&quot;shapefile&quot;,
-                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shp&quot;,
-                &quot;to_project_files&quot;:1
-            },
-            ...
-            ...
-            ],
-        &quot;processed&quot;:true
-    },
-    {
-        &quot;id&quot;:1,
-        &quot;name&quot;:&quot;shapefile&quot;,
-        &quot;description&quot;:&quot;Shapefiles for geodata&quot;,
-        &quot;file_type&quot;:&quot;Geo_File&quot;,
-        &quot;data_type&quot;:2,
-        &quot;project&quot;:2,
-        &quot;files&quot;:[
-            {
-                &quot;id&quot;:1,
-                &quot;file_type&quot;:&quot;shapefile&quot;,
-                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shx&quot;,
-                &quot;to_project_files&quot;:1
-            },
-            {
-                &quot;id&quot;:2,
-                &quot;file_type&quot;:&quot;shapefile&quot;,
-                &quot;file&quot;:&quot;http://127.0.0.1:8000/media/projects/project%20type%201/project_1/Geo_File/shapefile/Exemple_TOPO.shp&quot;,
-                &quot;to_project_files&quot;:1
-            },
-            ...
-            ...
-            ],
-        &quot;processed&quot;:true
-    },
+    &quot;id&quot;: 236,
+    &quot;name&quot;: &quot;VCLBRAG&quot;,
+    &quot;description&quot;: &quot;bclabk&quot;,
+    &quot;file_type&quot;: &quot;Geo_File&quot;,
+    &quot;data_type&quot;: null,
+    &quot;project&quot;: 1,
+    &quot;files&quot;: [
+        {
+            &quot;id&quot;: 446,
+            &quot;nbr_chunk&quot;: 8,
+            &quot;file_name&quot;: &quot;Orthomosaïque.tif&quot;,
+            &quot;file&quot;: &quot;https://storage.googleapis.com/inthe_bucket/projects/projectType%201/project_test/VCLBRAG/Orthomosa%C3%AFque/Orthomosa%C3%AFque.tif?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=inthe-account-med%40natural-point-401007.iam.gserviceaccount.com%2F20240301%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20240301T182618Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;X-Goog-Signature=373af158405dd8c5a7dc73d24556a30d3f7f2c6aaaeea0ed8928b601999967c9835401298a570594b08f6e678f33cdfc8a601cd7c41eef7e3030c73c7d7a1b800ebd6652e9409edccb79463c3bdf2f978d532dce34aa0c6d5cf5545080f0655396092b5fc0acc1a4508869f0d269ef9eecf2b03924744f9b48a88cb5563eca4ea06740228284e1c7befcb087b303be083b88a8a0e9eebd2c87ea562e2770f1d0d07a46177bc9a487feff7aaad57c246b06c3be6b04d19c9364e034bd15f999d3e652199d7b361fffeb27891542d648d45890bada1e0f5786216c5433619c4ee5c477d744b1dff0f659b5c462889ad1801d69b247e007f43fabc6eac7d703a3c2&quot;,
+            &quot;to_project_files&quot;: 236
+        },
+        ...
+        ...
+    ],
+    &quot;file_extention&quot;: &quot;raster&quot;,
+    &quot;processed&quot;: false,
+    &quot;error&quot;: false,
+    &quot;error_message&quot;: &quot;&quot;
+},
+   {
+    &quot;id&quot;: 236,
+    &quot;name&quot;: &quot;VCLBRAG&quot;,
+    &quot;description&quot;: &quot;bclabk&quot;,
+    &quot;file_type&quot;: &quot;Geo_File&quot;,
+    &quot;data_type&quot;: null,
+    &quot;project&quot;: 1,
+    &quot;files&quot;: [
+        {
+            &quot;id&quot;: 446,
+            &quot;nbr_chunk&quot;: 8,
+            &quot;file_name&quot;: &quot;Orthomosaïque.tif&quot;,
+            &quot;file&quot;: &quot;https://storage.googleapis.com/inthe_bucket/projects/projectType%201/project_test/VCLBRAG/Orthomosa%C3%AFque/Orthomosa%C3%AFque.tif?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=inthe-account-med%40natural-point-401007.iam.gserviceaccount.com%2F20240301%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20240301T182618Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;X-Goog-Signature=373af158405dd8c5a7dc73d24556a30d3f7f2c6aaaeea0ed8928b601999967c9835401298a570594b08f6e678f33cdfc8a601cd7c41eef7e3030c73c7d7a1b800ebd6652e9409edccb79463c3bdf2f978d532dce34aa0c6d5cf5545080f0655396092b5fc0acc1a4508869f0d269ef9eecf2b03924744f9b48a88cb5563eca4ea06740228284e1c7befcb087b303be083b88a8a0e9eebd2c87ea562e2770f1d0d07a46177bc9a487feff7aaad57c246b06c3be6b04d19c9364e034bd15f999d3e652199d7b361fffeb27891542d648d45890bada1e0f5786216c5433619c4ee5c477d744b1dff0f659b5c462889ad1801d69b247e007f43fabc6eac7d703a3c2&quot;,
+            &quot;to_project_files&quot;: 236
+        },
+        ...
+        ...
+    ],
+    &quot;file_extention&quot;: &quot;raster&quot;,
+    &quot;processed&quot;: false,
+    &quot;error&quot;: false,
+    &quot;error_message&quot;: &quot;&quot;
+},
     ...
     ...
     ]
@@ -544,12 +587,13 @@ Header:
 <li><code>&lt;id&gt;</code> : The project file's <code>id</code>  of whom you want to retrieve data.</li>
 <li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
 </ul>
-<h2 id="upload-project-file">Upload Project File</h2>
+<h2 id="uploadcreate-a-project-file">Upload/Create a Project File</h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Only <code>ADMIN</code> or <code>AG_DATA</code> project files can create project files with this API.</p>
 </div>
 <p>To create a projectfile data you can request the api endpoint <code>/api/projectfile/&lt;id&gt;/</code>:</p>
+<p>first you need to create the projectfile :</p>
 <pre><code class="language-http">POST / HTTP/1.1
 Host: &lt;BASE_URL&gt;/api/projectfile/&lt;id&gt;/
 Header:
@@ -561,13 +605,96 @@ Body: {
     &quot;data_type&quot;:&quot;id of the data type used by the project file&quot;,
     &quot;project&quot;:&quot;id of the project linked to the file&quot;,
     &quot;description&quot;:&quot;description of the project file&quot;,
-    &quot;uploaded_files&quot;:[List of the files that forms the project file]
 }
 </code></pre>
 <ul>
 <li><code>&lt;id&gt;</code> : The project <code>id</code> to whom you want to link the file.</li>
 <li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
 </ul>
+<p>This endpoints response is a json object that contains the project file's data, the project depends on the data type used by the project file:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;:263,
+    &quot;name&quot;:&quot;pdf&quot;,
+    &quot;description&quot;:&quot;dqdewq&quot;,
+    &quot;file_type&quot;:&quot;PDF&quot;,
+    &quot;data_type&quot;:null,
+    &quot;project&quot;:1,
+    &quot;files&quot;:[],
+    &quot;file_extention&quot;:&quot;pdf&quot;,
+    &quot;processed&quot;:false,
+    &quot;error&quot;:false,
+    &quot;error_message&quot;:&quot;&quot;}
+</code></pre>
+<p>Then you need to upload the files (by chunks) to the projectfile using the following requests</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The files are expected to be uploaded by chunks, you need to send the requst for each chunk.
+You first need to upload the fist chunk with the <code>/api/upload_file/</code> <code>POST</code> request in order to create the <code>FileChunk</code>(<a href="/Apps/files/MODELS#filechunk">link to model</a>). Then if the file has multiple chunks, you upload the rest of the chunks using the <code>/api/upload_file/&lt;id&gt;</code> <code>PUT</code> request. </p>
+</div>
+<pre><code class="language-http">POST / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api//api/upload_file/
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+Body: {
+    &quot;to_project_files&quot;:&quot;name of the file&quot;,
+    &quot;chunk_file&quot;:&quot;file extension id of the project file&quot;,
+    &quot;chunk_index&quot;:&quot;id of the data type used by the project file&quot;,
+    &quot;nbr_chunk&quot;:&quot;id of the project linked to the file&quot;,
+    &quot;file_name&quot;:&quot;description of the project file&quot;,
+}
+</code></pre>
+<pre><code class="language-http">PUT / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api//api/upload_file/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+Body: {
+    &quot;to_project_files&quot;:&quot;id of the projectfile this file is linked to&quot;,
+    &quot;chunk_file&quot;:&quot;file/blob containing the chunk of the main file&quot;,
+    &quot;chunk_index&quot;:&quot;index of the chunk relativaly to the main file&quot;,
+    &quot;nbr_chunk&quot;:&quot;number of chunks the file is divided to &quot;,
+    &quot;file_name&quot;:&quot;main file name&quot;,
+}
+</code></pre>
+<ul>
+<li><code>&lt;id&gt;</code> : The <code>FileChunk</code> <code>id</code> to whom you want to upload the chunk.</li>
+<li><code>&lt;ACCESS TOKEN&gt;</code> : The connected project file's access token.</li>
+</ul>
+<p>This endpoints response is a json object that contains the file's attributes:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;:499,
+    &quot;nbr_chunk&quot;:8,
+    &quot;file_name&quot;:&quot;Orthomosaïque.tif&quot;,
+    &quot;file&quot;:null,
+    &quot;to_project_files&quot;:264
+}
+</code></pre>
+<p>when all chunks are uploaded and combined, the final chunk upload request returns this response:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;:499,
+    &quot;nbr_chunk&quot;:8,
+    &quot;file_name&quot;:&quot;Orthomosaïque.tif&quot;,
+    &quot;file&quot;:&quot;https://storage.googleapis.com/inthe_bucket/projects/projectType%201/project_test/PDF/vvsvsdavsa/Orthomosa%C3%AFque/Orthomosa%C3%AFque.tif?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=inthe-account-med%40natural-point-401007.iam.gserviceaccount.com%2F20240328%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20240328T234224Z&amp;X-Goog-Expires=86400&amp;X-Goog-SignedHeaders=host&amp;X-Goog-Signature=37aa0c996d795d25eed966f326861c2652760ba7f6a29067d991a68b73dd73ca67a6c29bc15d5ecb4bf6499c1d6148fcf1eb9f08074d31e6542bd16b61dc78a3e994233f1d4efb2eb7ee567599c09754c7ced4bbc5e6dd7f80d5ce2eb3e8e552388f4b3559d9d2b03963df3d61d64eb55d2d2890231e806b30e9175052b6732410ab15a92d771f81d46cdce6499c4d70f34ac03025cd9a43e1546941b03bdd2434a722659bcd7cf6885dfae22c0e2f8a9774ff4cc877d2df31876aa82886252088eb694a368449bbae5ef19c5972225f73ec52c124290679694e92f4a8620dddc4456e384b6b6a9c0b1917674aac70daab09fc05c6debcd4122a8df6e8b38861&quot;,
+    &quot;to_project_files&quot;:264
+}
+</code></pre>
+<ul>
+<li><code>file</code> : url of the uploaded file in the cloud storage</li>
+</ul>
+<h2 id="process-a-project-file">Process a Project File</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After uploading all the chunks of the files related to a <code>ProjectFile</code>, you need to call <code>api/process_file/&lt;id&gt;</code> to process the <code>ProjectFile</code></p>
+</div>
+<pre><code class="language-http">GET / HTTP/1.1
+Host: &lt;BASE_URL&gt;/api//api/upload_file/&lt;id&gt;
+Header:
+    Authorization: Bearer &lt;ACCESS TOKEN&gt;
+    Content-Type: application/json
+</code></pre>
+<p>The response for this request is the processing state of the file, either a successeful response or an error response containing the error that occured.</p>
+<h2 id="projectfile-layerorder-on-the-map">ProjectFile LayerOrder on the map</h2>
               
             </div>
           </div><footer>

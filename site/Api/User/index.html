@@ -122,20 +122,24 @@
     <li class="toctree-l2"><a class="reference internal" href="../Project_File/#retrieve-data">Retrieve data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="../Project_File/#single-project-file-data-dataid">Single Project File data : data/&lt;id&gt;</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#geo_data">Geo_Data</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#analytics">Analytics</a>
+    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#raster-file">Raster file</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#retreive-raster-id">Retreive raster id:</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../Project_File/#retreive-raster-tiles">Retreive raster tiles</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="../Project_File/#all-project-files-of-a-project-projectfileid">All Project Files of a project : projectfile/&lt;id&gt;</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="../Project_File/#delete-project-file">Delete Project File</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#upload-project-file">Upload Project File</a>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#uploadcreate-a-project-file">Upload/Create a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#process-a-project-file">Process a Project File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../Project_File/#projectfile-layerorder-on-the-map">ProjectFile LayerOrder on the map</a>
     </li>
     </ul>
                   </li>
@@ -268,9 +272,13 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">SERIALIZERS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/SERIALIZERS/">Serializers</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/files/VIEWS/">VIEWS</a>
                 </li>
@@ -298,7 +306,9 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">Raster</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">MODELS</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/MODELS/">Models</a>
+    <ul>
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/raster/RASTER/">Raster App</a>
     <ul>
@@ -338,10 +348,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="#">User</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">User App Models Documentation</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/Models/">Models</a>
     <ul>
-    <li class="toctree-l3"><a class="reference internal" href="../../Apps/user/Models/#user-types">User Types</a>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../Apps/user/SERIALIZERS/">SERIALIZERS</a>
@@ -455,22 +463,24 @@ Header:
 </div>
 <p>This endpoints response is a json object that contains the user's data:</p>
 <pre><code class="language-json">{
-    &quot;id&quot;:2,
-    &quot;last_login&quot;:&quot;2023-09-28T11:40:59Z&quot;,
-    &quot;last_edit_date&quot;:&quot;2023-09-28T11:40:59.008359Z&quot;,
-    &quot;email&quot;:&quot;user@gmail.com&quot;,
-    &quot;username&quot;:&quot;user_test&quot;,
-    &quot;first_name&quot;:&quot;user&quot;,
-    &quot;last_name&quot;:&quot;test test&quot;,
-    &quot;telephone_number&quot;:&quot;0612345678&quot;,
-    &quot;position&quot;:&quot;dev&quot;,
-    &quot;linkedin_url&quot;:&quot;https://camille.linkedin.com&quot;,
-    &quot;hubspot_user_id&quot;:&quot;123dwq56fwq&quot;,
-    &quot;company&quot;:null,
-    &quot;user_type&quot;:&quot;CLIENT&quot;,
-    &quot;is_superuser&quot;:false,
-    &quot;is_staff&quot;:false
+    &quot;id&quot;: 4,
+    &quot;last_login&quot;: &quot;2023-12-13T10:05:19Z&quot;,
+    &quot;last_edit_date&quot;: &quot;2023-12-13T10:05:19.029683Z&quot;,
+    &quot;email&quot;: &quot;data2@gmail.com&quot;,
+    &quot;username&quot;: &quot;user_test_data&quot;,
+    &quot;first_name&quot;: &quot;user&quot;,
+    &quot;last_name&quot;: &quot;user&quot;,
+    &quot;telephone_number&quot;: &quot;0612345789&quot;,
+    &quot;position&quot;: &quot;feqwfewfewf&quot;,
+    &quot;linkedin_url&quot;: &quot;&quot;,
+    &quot;hubspot_user_id&quot;: &quot;wfwqfdfwefewfewf&quot;,
+    &quot;company&quot;: &quot;intheair&quot;,
+    &quot;company_id&quot;: 1,
+    &quot;user_type&quot;: &quot;AG_DATA&quot;,
+    &quot;is_superuser&quot;: true,
+    &quot;is_staff&quot;: true
 }
+
 </code></pre>
 <ul>
 <li>
@@ -494,38 +504,40 @@ Header:
 <p>This endpoint response is a list of json objects that contains users data (The list of all users):</p>
 <pre><code class="language-json">[
     {
-        &quot;id&quot;:2,
-        &quot;last_login&quot;:&quot;2023-09-28T11:40:59Z&quot;,
-        &quot;last_edit_date&quot;:&quot;2023-09-28T11:40:59.008359Z&quot;,
-        &quot;email&quot;:&quot;user@gmail.com&quot;,
-        &quot;username&quot;:&quot;user_test&quot;,
-        &quot;first_name&quot;:&quot;user&quot;,
-        &quot;last_name&quot;:&quot;test test&quot;,
-        &quot;telephone_number&quot;:&quot;0612345678&quot;,
-        &quot;position&quot;:&quot;dev&quot;,
-        &quot;linkedin_url&quot;:&quot;https://camille.linkedin.com&quot;,
-        &quot;hubspot_user_id&quot;:&quot;123dwq56fwq&quot;,
-        &quot;company&quot;:null,
-        &quot;user_type&quot;:&quot;CLIENT&quot;,
-        &quot;is_superuser&quot;:false,
-        &quot;is_staff&quot;:false
+        &quot;id&quot;: 4,
+        &quot;last_login&quot;: &quot;2023-12-13T10:05:19Z&quot;,
+        &quot;last_edit_date&quot;: &quot;2023-12-13T10:05:19.029683Z&quot;,
+        &quot;email&quot;: &quot;data2@gmail.com&quot;,
+        &quot;username&quot;: &quot;user_test_data&quot;,
+        &quot;first_name&quot;: &quot;user&quot;,
+        &quot;last_name&quot;: &quot;user&quot;,
+        &quot;telephone_number&quot;: &quot;0612345789&quot;,
+        &quot;position&quot;: &quot;feqwfewfewf&quot;,
+        &quot;linkedin_url&quot;: &quot;&quot;,
+        &quot;hubspot_user_id&quot;: &quot;wfwqfdfwefewfewf&quot;,
+        &quot;company&quot;: &quot;intheair&quot;,
+        &quot;company_id&quot;: 1,
+        &quot;user_type&quot;: &quot;AG_DATA&quot;,
+        &quot;is_superuser&quot;: true,
+        &quot;is_staff&quot;: true
     },
     {
-        &quot;id&quot;:1,
-        &quot;last_login&quot;:&quot;2023-10-05T12:30:42Z&quot;,
-        &quot;last_edit_date&quot;:&quot;2023-10-05T12:30:42.170246Z&quot;,
-        &quot;email&quot;:&quot;haitam@gmail.com&quot;,
-        &quot;username&quot;:&quot;haitam&quot;,
-        &quot;first_name&quot;:&quot;&quot;,
-        &quot;last_name&quot;:&quot;&quot;,
-        &quot;telephone_number&quot;:null,
-        &quot;position&quot;:null,
-        &quot;linkedin_url&quot;:null,
-        &quot;hubspot_user_id&quot;:&quot;&quot;,
-        &quot;company&quot;:null,
-        &quot;user_type&quot;:&quot;ADMIN&quot;,
-        &quot;is_superuser&quot;:true,&quot;
-        is_staff&quot;:true
+        &quot;id&quot;: 4,
+        &quot;last_login&quot;: &quot;2023-12-13T10:05:19Z&quot;,
+        &quot;last_edit_date&quot;: &quot;2023-12-13T10:05:19.029683Z&quot;,
+        &quot;email&quot;: &quot;data2@gmail.com&quot;,
+        &quot;username&quot;: &quot;user_test_data&quot;,
+        &quot;first_name&quot;: &quot;user&quot;,
+        &quot;last_name&quot;: &quot;user&quot;,
+        &quot;telephone_number&quot;: &quot;0612345789&quot;,
+        &quot;position&quot;: &quot;feqwfewfewf&quot;,
+        &quot;linkedin_url&quot;: &quot;&quot;,
+        &quot;hubspot_user_id&quot;: &quot;wfwqfdfwefewfewf&quot;,
+        &quot;company&quot;: &quot;intheair&quot;,
+        &quot;company_id&quot;: 1,
+        &quot;user_type&quot;: &quot;AG_DATA&quot;,
+        &quot;is_superuser&quot;: true,
+        &quot;is_staff&quot;: true
     },
     ...
     ...
@@ -560,21 +572,22 @@ Body: {
 </div>
 <p>This endpoints response is a json object that contains the new user's data:</p>
 <pre><code class="language-json">{
-    &quot;id&quot;:2,
-    &quot;last_login&quot;:&quot;2023-09-28T11:40:59Z&quot;,
-    &quot;last_edit_date&quot;:&quot;2023-09-28T11:40:59.008359Z&quot;,
-    &quot;email&quot;:&quot;user@gmail.com&quot;,
-    &quot;username&quot;:&quot;user_test&quot;,
-    &quot;first_name&quot;:&quot;user&quot;,
-    &quot;last_name&quot;:&quot;test test&quot;,
-    &quot;telephone_number&quot;:&quot;0612345678&quot;,
-    &quot;position&quot;:&quot;dev&quot;,
-    &quot;linkedin_url&quot;:&quot;https://camille.linkedin.com&quot;,
-    &quot;hubspot_user_id&quot;:&quot;123dwq56fwq&quot;,
-    &quot;company&quot;:null,
-    &quot;user_type&quot;:&quot;CLIENT&quot;,
-    &quot;is_superuser&quot;:false,
-    &quot;is_staff&quot;:false
+    &quot;id&quot;: 4,
+    &quot;last_login&quot;: &quot;2023-12-13T10:05:19Z&quot;,
+    &quot;last_edit_date&quot;: &quot;2023-12-13T10:05:19.029683Z&quot;,
+    &quot;email&quot;: &quot;data2@gmail.com&quot;,
+    &quot;username&quot;: &quot;user_test_data&quot;,
+    &quot;first_name&quot;: &quot;user&quot;,
+    &quot;last_name&quot;: &quot;user&quot;,
+    &quot;telephone_number&quot;: &quot;0612345789&quot;,
+    &quot;position&quot;: &quot;feqwfewfewf&quot;,
+    &quot;linkedin_url&quot;: &quot;&quot;,
+    &quot;hubspot_user_id&quot;: &quot;wfwqfdfwefewfewf&quot;,
+    &quot;company&quot;: &quot;intheair&quot;,
+    &quot;company_id&quot;: 1,
+    &quot;user_type&quot;: &quot;AG_DATA&quot;,
+    &quot;is_superuser&quot;: true,
+    &quot;is_staff&quot;: true
 }
 </code></pre>
 <h2 id="delete-user">Delete User</h2>
