@@ -39,10 +39,19 @@ class ProjectFile(models.Model):
 
 This callback delete the related files from the Storage System thus freeing space by removing unused files.
 ### post_save_Project_File()
-This callback create a `LayerOrder` instance for the file if it is a `GEO_FILE` instance (`GEO_FILE` is a `FileType` instance). It gives priority, putting them on top level, to files that has a `data_type` linked to them, thus files who are not `rasters`.
+This callback create a [`LayerOrder`](#layerorder) instance for the file if it is a `GEO_FILE` instance (`GEO_FILE` is a `FileType` instance). It gives priority, putting them on top level, to files that has a `data_type` linked to them, thus files who are not `rasters`.
 
 
 
+# LayerOrder
+
+These instances represents the layers dispositions on the map, `GEO_FILE` with higher order number are displayed over `GEO_FILE` with lower ones.
+
+```python
+class LayerOrder(models.Model):
+    project_file = models.OneToOneField(ProjectFile, on_delete=models.CASCADE, primary_key=True)
+    order = models.IntegerField(default=1)
+```
 # FileType
 
 Each `ProjectType` instance has a `FileType` attribute that represent how the file should be visualized for example `GEO_FILE` will be visualized on maps, `ANALYTICS` in tables, `IMAGES` on pup ups etc..
@@ -179,8 +188,20 @@ class RasterData(models.Model):
 ```
 - `raster` : foreign key to the [`RasterLayer`](/Apps/raster/MODELS#rasterlayer) instance related to the `project_file`
 
-# LayerOrder
-
-# DroneField
-
 # ProjectField
+
+This class instances represent the area that contains the project on the map. It is extracted from the `kml` file uploaded on project creation.
+
+```python
+class ProjectField(models.Model):
+    project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name='delimitation_field')
+    geom = models.MultiPolygonField(srid=4326, dim=3)
+   
+    @property
+    def allowed(self):
+        if self.project:
+            return (self.project_set.user,)
+        return (None,)
+```
+
+- `geom` : A geometry field (based on GIS library) that contains the data extracted from the `kml` file.

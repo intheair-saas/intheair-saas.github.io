@@ -135,7 +135,7 @@ DEFAULT_FROM_USER=<DEFAULT EXPEDITOR EMAIL (WILL PROBABLY BE THE CONTACT EMAIL A
 ```
 
 ### Database
-The database used in our backend is a **postgresql** database, it needs to support **GIS** and **raster** functionalities. Make sure to install **postgis** and **raster** libraries in the database created (you can contact your database administrator to add the plugins).
+The database used in our backend is a **postgresql** database, it needs to support **GIS** and **raster** functionalities. Make sure to install **postgis** and **raster** extensions  in the database created (you can contact your database administrator to add the plugins).
 After creating and configuring the database you need to configure the backend to connect to it. Fill the variables in the **.env** file to allow the connection:
 ```env
 DB_HOST=<DATABASE URL/HOST>
@@ -159,16 +159,16 @@ ALLOWED_CRSF_ORIGINS=<Front_DNS:PORT>
 ```
 ## Run the server
 ### Init the Data
-> [!WARNING]
-> Don't run this section if you are using the always database pre-configured in this repository, only run it if you are using a new empty database !
-To run the server we need to first migrate the data base:
+!!! warning
+    Don't run this section if you are using the always database pre-configured in this repository, only run it if you are using a new empty database !
+    To run the server we need to first migrate the data base:
 ```shell
 python manage.py makemigrations
 python manage.py migrate
 ```
-Then we have to create a super admin, run this command and follow the instructions:
+Then we have to create a super admin to manage the django admin section if needed, run this command and follow the instructions:
 ```shell
-python manage-py createsuperuser <USER>
+python manage.py createsuperuser <USER>
 ```
 We then have to populate the data base with the required data. We first open a django shell:
 ```shell
@@ -176,19 +176,17 @@ python manage.py shell
 ```
 Then we can use the built in script to create the data:
 ```python
-from files import script
-script.add_data_type()
-script.add_drone_fields()
+from files import script as fs
+from user import script as us
+fs.add_data_type()
+us.init_data_base()
 ```
-We then have to attribute to our user the ADMIN permissions and set an email address to him. 
-in the opened shell enter the commands:
-```python
-from user.models import User
-user = User.objects.get(username=<USER>)
-user.email = '<EMAIL>'
-user.user_type = 'ADMIN'
-user.save()
-```
+3 users have been created with this command:
+
+- `CLIENT` type user : {email:client@gmail.com, password:intheair123}
+- `ADMIN` type user : {email:admin@gmail.com, password:intheair123}
+- `AG_DATA` type user : {email:data@gmail.com, password:intheair123}
+
 You can now exit the shell.
 
 ### Run
@@ -197,7 +195,7 @@ in the `/intheair/` directory run this 3 commands in separate terminals:
 
 1- Start Django server:
 ```shell
-python manage.py runserver
+python manage.py runserver --noreload
 ```
 2- Start RabbitMQ:
 ```shell
